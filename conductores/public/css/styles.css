@@ -1,0 +1,278 @@
+body {
+
+	background-color: white;
+	
+}
+
+p {
+
+	font-family: 'Roboto', sans-serif;
+
+	font-size: 1.2em;
+
+	text-indent: 3em;
+
+}
+
+.fonts {
+	font-family: 'Anton', sans-serif;
+
+	font-family: 'Bree Serif', serif;
+
+	font-family: 'Roboto', sans-serif;
+
+	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
+
+}
+
+.imagen img {
+	width: 100%;
+}
+/** LOADER */
+
+#loader {
+
+
+
+}
+
+.header{
+    background: url('../img/loader.jpg') no-repeat fixed;
+    background-size: cover;
+    min-height: 650px;
+    position: relative;
+}
+.bg-color
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 650px;
+}
+
+.no-float {
+	float: none;
+}
+
+.banner-title {
+
+	padding-top: 50px;
+
+}
+
+.banner-title h1,h2,h3 {
+	font-family: 'Anton', sans-serif;
+	color: white;
+	font-size: 50px;
+}
+
+.banner-subtitle {
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	font-size: 18px;
+}
+
+.btn-loader {
+	margin: 30px;
+}
+
+.btn-margin {
+	margin-right: 40px;
+}
+
+/**	 Roles	**/
+
+.roles {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: #D5D8DC;
+	min-height: 300px;
+}
+
+/** NOSOTROS */
+
+.about {
+	background-color: #EAECEE;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	min-height: 300px;
+}
+
+.line {
+	
+	height: 2px;
+	background-color: black;
+
+}
+
+.title-about {
+	font-family: 'Anton', sans-serif;
+	color: #F1C40F;
+	
+}
+
+/** RESUMEN */
+
+.resumen {
+	background-color: #D5D8DC;
+	min-height: 300px;
+}
+
+.item {
+	width: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.resumen h3 {
+	font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #636b7a;
+    font-size: 30px;
+}
+
+/** VIAJERO */
+
+.viajero {
+
+}
+
+.center {
+	background-color: #EAECEE;
+}
+
+.center p {
+	font-size: 1.5em;
+}
+
+.line2 {
+	height: 2px;
+	background-color: black;
+	width: 40px;
+}
+
+.top {
+	background-color: #D5D8DC;
+	min-height: 150px;
+}
+
+.bottom {
+	background-color: #D5D8DC;
+	min-height: 150px;
+}
+
+.fonts-top {
+	font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #636b7a;
+    font-size: 35px;
+}
+
+.fonts-top2 {
+	font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 35px;
+}
+
+/** CONDUCTORES */
+
+.panel-group .panel+.panel {
+    margin-top: 0px;
+}
+
+.panel-default {
+	background-color: #EAECEE;
+}
+
+.panel-default p {
+	font-family: 'Roboto', sans-serif;
+
+	font-size: 1.2em;
+}
+
+.title-conduc {
+	font-family: 'Raleway', sans-serif;
+    color: #636b7a;
+    font-size: 25px;
+}
+
+.faqs h3{
+	font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #F1C40F;
+    font-size: 30px;
+}
+
+/** PERFIL */
+
+.title-p h1,h2,h3{
+
+	font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #F1C40F;
+    font-size: 30px;
+
+}
+
+.title-p img {
+	width: 100%;
+}
+
+.conduct_show {
+
+}
+
+.conduct_show p {
+	text-indent: 0;
+}
+
+.description p{
+	text-indent: 3em;
+}
+
+.margen {
+
+	margin-bottom: 50px;
+
+}
+
+/**	ADMIN */
+
+.panel-green {
+
+	    border-color: #5cb85c;
+
+}
+
+.panel-green > .panel-heading {
+
+	border-color: #5cb85c;
+    color: white;
+    background-color: #5cb85c;
+
+}
+
+/* CONDUCTORES */
+
+.conduct {
+
+}
+
+.conduct p {
+	font-size: 1em;
+	text-indent: 0;
+}
+
+.conduct h3 {
+	font-size: 25px;
+}
+
+.conduct > .btn {
+
+	font-size: 0.5em;
+}
+
+footer {
+	background-color: #F4D03F;
+	min-height: 50px;
+}
