@@ -16,13 +16,13 @@
     
 </section>
 
-<section class="center conduct_show">
+<section class="center">
 
 				<div class="container">
 					
 					<div class="row title-p">
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
 
 						@if (Auth::user()->extension != null)
 						   
@@ -30,7 +30,7 @@
 
 						@else
 						    
-						   <img src="{{ url('img/')}}/profile.png" alt="">
+						   <img src="img/profile.png" alt="">
 
 						@endif
 						
@@ -40,17 +40,17 @@
 
 						</div>
 
-						<div class="col-md-4 text-capitalize">
+						<div class="col-md-3 text-capitalize">
 							
 							<h2>Datos Personales</h2>
 
-							<p>Nombre: {{ $conduct->name }}</p>
-							<p>Estado: {{ $conduct->state }}</p>
+							<p>Name: {{ $conduct->name }}</p>
+							<p>State: {{ $conduct->state }}</p>
 
 						</div>
 
 
-						<div class="col-md-4 text-capitalize">
+						<div class="col-md-3 text-capitalize">
 							
 						<h2>Datos Del Auto</h2>
 
@@ -64,13 +64,13 @@
 
 					<div class="row">
 						
-						<div class="row description">
+						<div class="row">
 							<h2>Descripcion:</h2>
 							
 							<p> {{ $conduct->body }} </p>
 						</div>
 
-					<div class="row margen">
+					<div class="row">
 
 					<div class="text-center">
 						
@@ -145,38 +145,56 @@
   </div>
 </div>
 
-    
+    @if( Auth::check() )
+
+        @php
+            // Con esto me traigo los comentarios que estan en esta pagina
+            $comments = App\Comment::where("user_id_where_comment","=",$conduct->user_id)->get();
+        @endphp
+        
+        @foreach($comments as $comment)
+             <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        
+                        @if($comment->wasCreatedBy( Auth::user() ))
+                        <small class="pull-right">
+                            <a href="#" class="btn btn-info">Edit</a>
+                            <form action="{{ route('delete_comment_path', ['comment' => $comment->id]) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class='btn btn-danger'>Delete</button>
+                        </form>
+                        </small>
+                        @endif
+                    </h2>
+                    <p><b>{{ $comment->name }} {{ $comment->last_name }}</b> <small>{{ $comment->created_at->diffForHumans() }}</small> </p>
+                    <p>{{ $comment->content }}</p>
+                </div>
+            </div>
+            <hr>
+        @endforeach
+    <!--- Formulario de comentario -->
+
+
+        @if($conduct->user_id != Auth::user()->id)
+            @php
+                $comment = new App\Comment;
+                $comment->user_id_where_comment = $conduct->user_id;
+            @endphp
+            @include('comment._form', ['comment' => $comment])
+        @endif
+
+    @endif
     
 	<section class="bottom">
     <div class="container">
         <div class="row">
             
-        @if( Auth::check() )
+            <div class="">
+                <p> &nbsp; </p>
+            </div>
 
-        <!--- Formulario de comentario -->
-
-
-            @if($conduct->user_id != Auth::user()->id)
-                @php
-                    $comment = new App\Comment;
-                    $comment->user_id_where_comment = $conduct->user_id;
-                @endphp
-                @include('comment._form', ['comment' => $comment])
-            @endif
-
-            @php
-                // Con esto me traigo los comentarios que estan en esta pagina
-                $comments = App\Comment::where("user_id_where_comment","=",$conduct->user_id)->orderBy('id','desc')->paginate(15);
-            @endphp
-
-            <hr>
-        
-            @include('comment.index')
-            
-            {{ $comments->links() }}
-
-    @endif
-            
         </div>
     </div>
         

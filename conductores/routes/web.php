@@ -21,9 +21,8 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::name('conduct_store')->post('/conduct', 'ConductController@store');
 
-	Route::name('conducts')->get('/conducts', 'ConductController@index_conduct');
-
-	Route::name('conduct_show')->get('/conduct_show/{id}', 'ConductController@conduct_show');
+	
+	Route::name('conduct_show')->get('/conducts/{conduct}', 'ConductController@show');
 
 	// Pagos
 	Route::name('payouts_path')->get('/payouts', 'PayoutController@index');
@@ -67,6 +66,8 @@ Route::name('confirm_pago')->put('/admin/pagos', 'PayoutController@confirm_pago'
 /*
 RUTAS PUBLICAS
  */
+
+Route::name('conducts')->get('/conducts', 'ConductController@index');
 
 Route::get('/', function () {
     return view('welcome');

@@ -48,7 +48,7 @@ class ConductController extends Controller
 
 	}
 
-	public function index_conduct (){
+	public function index (){
 
 		$conducts = Conduct::all();
 
@@ -56,12 +56,11 @@ class ConductController extends Controller
 
 	}
 
-	public function conduct_show($id) {
+	public function show(Conduct $conduct)
+    {
+    	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);
 
-		$conduct = Conduct::find($id);
-
-		return view('conductor.conduct_show')->with(['conduct' => $conduct]);
-
-	}
+        return view('conductor.show')->with(['conduct' => $conduct]);
+    }
 
 }
