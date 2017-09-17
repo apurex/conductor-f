@@ -47,5 +47,6 @@ class CreatePayoutsTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('payouts');
     }
 }
