@@ -30,7 +30,7 @@
 
 						@else
 						    
-						   <img src="img/profile.png" alt="">
+						   <img src="{{ url('img/')}}/profile.png" alt="">
 
 						@endif
 						

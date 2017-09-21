@@ -30,13 +30,18 @@
     @if($payout->wasCreatedBy( Auth::user() ))
         <tr>
             <td> {{ $payout->id }} </td>
-            <td> {{ $payout->active }} </td>
+            @if($payout->active == 0)
+                <td> Por Confirmar </td>
+            @else
+                <td> Confirmado </td>
+            @endif
+            <!-- <td> {{ $payout->active }} </td> -->
             <td> {{ $payout->last_payout }} </td>
             <td> {{ $payout->num_ref }} </td>
             <td> {{ $payout->plan }} </td>
             <td> {{ $payout->created_at->diffForHumans() }} </td>
-            <td> {{ $payout->left_days }} </td>
             <td> {{ $payout->exp_date }} </td>
+            <td> {{ $payout->left_days }} </td>
             <td> <a href="#" class="btn btn-info">Edit</a> </td>
             <td> <form action="{{ route('delete_payout_path', ['payout' => $payout->id]) }}" method="POST">
                 {{ csrf_field() }}

@@ -60,7 +60,16 @@ class ConductController extends Controller
     {
     	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);
 
-        return view('conductor.show')->with(['conduct' => $conduct]);
+        return view('conductor.conduct_show')->with(['conduct' => $conduct]);
+    }
+
+    public function activar_profile(Request $conduct) {
+
+    	\DB::table('conducts')
+            ->where('id', $conduct->id)
+            ->update(['verif' => 1]);
+
+            return back();
     }
 
 }

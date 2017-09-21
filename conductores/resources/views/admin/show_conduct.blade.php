@@ -36,9 +36,38 @@
 						<td> {{ $conduct->name }} {{ $conduct->last_name }}</td>
 						<td> {{ $conduct->phone }} </td>
 						<td> {{ $conduct->state }} </td>
-						<td> Inactivo</td>
-						<td> <a class="btn btn-primary" href="#" role="button">GESTIONAR</a> </td>
-						<td> <a class="btn btn-danger" href="#" role="button">ELIMINAR</a> </td>
+						@if($conduct->verif == 0)
+							<td> Inactivo </td>
+						@else 
+							<td> Activo </td>
+						@endif
+
+						<td> 
+						
+						<form action="{{ route('verif_perfil') }}" method="POST">
+
+			                {{ csrf_field() }}
+			                {{ method_field('put') }}
+
+			                <input type="hidden" name="id" value="{{ $conduct->id }}">
+			                <button type="submit" class='btn btn-primary'>Acivar Perfil</button>
+			            </form>
+						
+						<!-- <a class="btn btn-primary" href="#" role="button">GESTIONAR</a> --> 
+
+						</td>
+						<td> 
+
+							<form action="{{ route('delete_conduct', ['conduct_de' => $conduct->id]) }}" method="POST">	
+								{{ csrf_field() }}
+								{{ method_field('DELETE') }}
+								<input type="hidden" name="id" value="{{ $conduct->id }}">
+								<button type="submit" class="btn btn-danger">Borrar</button>
+							</form>
+
+							<!-- <a class="btn btn-danger" href="#" role="button">ELIMINAR</a> --> 
+
+						</td>
 
 
 						</tr>

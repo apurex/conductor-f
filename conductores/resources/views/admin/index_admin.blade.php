@@ -58,7 +58,7 @@
                                 
                                     @php
 
-                                        // Obtengo el nro de usuarios
+                                        // Obtengo el nro de CONDUCTORES
                                         $user_cont = App\User::where('roles', 1)->count();
 
                                     @endphp
@@ -86,7 +86,15 @@
                                     <i class="fa fa-life-ring fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
+
+                                    @php
+
+                                        // Obtengo el nro de CONDUCTORES sin perfil activado
+                                        $user_cont = App\Conduct::where('verif', 0)->count();
+
+                                    @endphp
+
+                                    <div class="huge">{{$user_cont}}</div>
                                     <div>PERFILES POR ACTIVAR</div>
                                 </div>
                             </div>
@@ -112,8 +120,8 @@
                                     <div class="huge">
                                     @php
 
-                                        // Obtengo el nro de usuarios
-                                        $pay_cont = DB::table('payouts')->count();
+                                        // Obtengo el nro de pagos
+                                        $pay_cont = App\Payout::where('active', 0)->count();
 
                                     @endphp
                                     {{ $pay_cont }}</div>

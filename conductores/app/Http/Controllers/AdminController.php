@@ -44,4 +44,19 @@ class AdminController extends Controller
 
     }
 
+    public function destroy(Conduct $conduct, Request $request) {
+
+        $id = $request->get('id');
+        $conductt = Conduct::find($id);
+        $conductu = User::find($id);
+        $conductp = Payout::where('user_id', $id)->first();
+
+        $conductt->delete();
+        $conductu->delete();
+        $conductp->delete();
+
+        return back();
+
+    }
+
 }

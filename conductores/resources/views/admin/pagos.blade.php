@@ -25,7 +25,7 @@
 						<td>Plan</td>
 						<td>Dias restantes</td>
 						<td>Fecha de Venc.</td>
-						<td>Activo</td>
+						<td>Estado</td>
 						<td colspan="2">Acciones</td>
 
 					</tr>
@@ -41,7 +41,11 @@
 						<td> {{ $payout->num_ref }} </td>
 						<td> {{ $payout->left_days }} </td>
 						<td> {{ $payout->exp_date }} </td>
-						<td> {{ $payout->active }} </td>
+						@if($payout->active == 0)
+							<td>Sin Confirmar</td>
+						@else 
+							<td>Confirmado</td>
+						@endif
 						<td> 
 						<form action="{{ route('confirm_pago') }}" method="POST">
                 {{ csrf_field() }}
