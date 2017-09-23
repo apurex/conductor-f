@@ -35,8 +35,8 @@ class AdminController extends Controller
     }
     public function confirm_pago(Payout $payout) {
 
-        DB::table('payouts')
-            ->where('id', 1)
+        \DB::table('payouts')
+            ->where('id', $payout->id)
             ->update(['active' => 1]);
 
         
@@ -57,6 +57,14 @@ class AdminController extends Controller
 
         return back();
 
+    }
+
+    public function deletePayout(Payout $payout){
+
+        $pay = Payout::first($payout->id);
+        $pay->delete();
+
+        return redirect()->route('show_pagos');
     }
 
 }

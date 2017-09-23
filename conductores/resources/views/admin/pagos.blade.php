@@ -53,7 +53,16 @@
                 <input type="hidden" name="id" value="{{ $payout->id }}">
                 <button type="submit" class='btn btn-primary'>Confirmar Pago</button>
             </form> </td>
-						<td> <a class="btn btn-danger" href="#" role="button">ELIMINAR</a> </td>
+						<td> <form action="{{ route('delete_pago', ['payout' => $payout]) }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class='btn btn-danger'>Delete
+                @php
+                	echo $payout->id;
+                @endphp
+                </button>
+</form>
+                </td>
 						</tr>
 						@endforeach
 

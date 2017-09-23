@@ -63,6 +63,7 @@ Route::name('show_user')->get('/admin/user_show', 'AdminController@show_user');
 Route::name('show_conduct')->get('/admin/conduc_show', 'AdminController@show_conduct');
 Route::name('show_pagos')->get('/admin/pagos', 'AdminController@show_pagos');
 Route::name('confirm_pago')->put('/admin/pagos', 'PayoutController@confirm_pago');
+Route::name('delete_pago')->delete('/admin/pagos', 'AdminController@deletePayout');
 Route::name('delete_conduct')->delete('/admin/{conduct_de}', 'AdminController@destroy');
 Route::name('verif_perfil')->put('admin/verif', 'ConductController@activar_profile');
 /*

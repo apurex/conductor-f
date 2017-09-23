@@ -44,11 +44,12 @@ class PayoutController extends Controller
 
 	public function edit(Payout $payout)
     {
+        $payout = Payout::first($payout->id);
         if($payout->user_id != \Auth::user()->id) {
             return redirect()->route('payouts_path');
         }
         
-        return view('payouts.edit')->with(['payout' => $payout]);
+        return view('payout.edit')->with(['payout' => $payout]);
     }
 
 
@@ -63,17 +64,18 @@ class PayoutController extends Controller
         return redirect()->route('payouts_path', ['payout' => $payout->id]);
     }
 
-    public function delete(Payout $payout)
+    public function delete(Request $request)
     {
+        $payout = Payout::first($request->id);
         if($payout->user_id != \Auth::user()->id) {
             return redirect()->route('payouts_path');
         }
-
         $payout->delete();
 
        // session()->flash('message', 'payout Deleted!');
 
-        return Redirect::back();
+        return redirect()->route('payouts_path');
+
     }
 
 	public function index()

@@ -43,7 +43,7 @@
             <td> {{ $payout->exp_date }} </td>
             <td> {{ $payout->left_days }} </td>
             <td> <a href="/payouts/edit" class="btn btn-info">Edit</a> </td>
-            <td> <form action="{{ route('delete_payout_path', ['payout' => $payout->id]) }}" method="POST">
+            <td> <form action="{{ route('delete_payout_path', ['payout' => $payout]) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button type="submit" class='btn btn-danger'>Delete</button>
