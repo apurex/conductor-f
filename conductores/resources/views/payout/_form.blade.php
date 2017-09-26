@@ -19,7 +19,7 @@
         <input class="form-control" type="text" name="num_ref" value="{{ $payout->num_ref or old('num_ref')}}">
     </div>
     <div class="form-group">
-        <label for="last_payout">MOnto de pago</label>
+        <label for="last_payout">Monto de pago</label>
         <input class="form-control" type="text" name="last_payout" value="{{ $payout->last_payout or old('last_payout')}}">
     </div>
 
