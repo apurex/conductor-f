@@ -50,6 +50,24 @@ class ConductController extends Controller
 
 	}
 
+	public function img_car (Request $request) {
+
+		$this->validate($request, [
+            'file' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+
+        $nro = $request->get('nro');
+
+        $user = Auth::user();
+        $file = $request->file('file');
+        $url = $file->getClientOriginalExtension();
+
+        $path = $request->file('file')->storeAs('public/imgs/cars/car_' . Auth::user()->id, 'car_' . $nro . '.' . $url);
+
+        return back();
+
+	}
+
 	public function edit (){
 		return view('conductor.edit');
 	}

@@ -43,7 +43,7 @@
 				            @include('layouts._messages')
 				        </div>
 
-				        @include('conductor._edit', ['conduct' => $conduct])
+				        @include('conductor._edit')
 
 						<!-- <form class="form-horizontal" action="{{ Route('conduct_store')}}" method="POST">
 	
@@ -100,6 +100,74 @@
 						  </div>
 	
 						</form> -->
+
+						<h2 class="text-center">Por Favor Subir Fotos del Vehiculo </h2>
+
+						<div class="col-md-6 imagen-car">
+							
+							<div class="imagen">
+								<img src="{{ url('img/')}}/profile.png" alt="" class="img-resposive">
+							</div>
+
+							<form action="{{Route('conduct_img')}}" method="post" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								
+								<input type="file" name="file" id="exampleInputFile">
+								<input type="hidden" name="nro" value="1">
+								<button type="submit" class="btn btn-primary">ENVIAR</button>
+								
+							</form>
+						</div>
+
+						<div class="col-md-6 imagen-car" class="imagen">
+								<div class="imagen">
+								<img src="{{ url('img/')}}/profile.png" alt="" class="img-resposive">
+							</div>
+							
+
+							<form action="{{Route('conduct_img')}}" method="post" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								
+								<input type="file" name="file" id="exampleInputFile">
+								<input type="hidden" name="nro" value="2">
+								<button type="submit" class="btn btn-primary">ENVIAR</button>
+								
+							</form>
+						</div>
+
+						<div class="col-md-6 imagen-car" class="imagen">
+							
+								<div class="imagen">
+								<img src="{{ url('img/')}}/profile.png" alt="" class="img-resposive">
+							</div>
+							
+
+							<form action="{{Route('conduct_img')}}" method="post" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								
+								<input type="file" name="file" id="exampleInputFile">
+								<input type="hidden" name="nro" value="3">
+								<button type="submit" class="btn btn-primary">ENVIAR</button>
+								
+							</form>
+						</div>
+
+						<div class="col-md-6 imagen-car" class="imagen">
+							
+								<div class="imagen">
+								<img src="{{ url('img/')}}/profile.png" alt="" class="img-resposive">
+							</div>
+							
+
+							<form action="{{Route('conduct_img')}}" method="post" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								
+								<input type="file" name="file" id="exampleInputFile">
+								<input type="hidden" name="nro" value="4">
+								<button type="submit" class="btn btn-primary">ENVIAR</button>
+								
+							</form>
+						</div>
 	
 	                </div>
 	            </div>

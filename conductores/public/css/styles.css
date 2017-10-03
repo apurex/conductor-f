@@ -29,6 +29,11 @@ p {
 .imagen img {
 	width: 100%;
 }
+
+.imagen-car {
+	padding: 45px;
+}
+
 /** LOADER */
 
 #loader {
