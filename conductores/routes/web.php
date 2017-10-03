@@ -18,7 +18,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     
     Route::name('conduct_create')->get('/conduct_create', 'ConductController@create');
-
+    Route::name('conduct_update')->put('conduct_create/update', 'ConductController@update');
 	Route::name('conduct_store')->post('/conduct', 'ConductController@store');
 
 	
@@ -64,7 +64,7 @@ Route::name('show_conduct')->get('/admin/conduc_show', 'AdminController@show_con
 Route::name('show_pagos')->get('/admin/pagos', 'AdminController@show_pagos');
 Route::name('confirm_pago')->put('/admin/pagos', 'PayoutController@confirm_pago');
 Route::name('delete_pago')->delete('/admin/pagos', 'AdminController@deletePayout');
-Route::name('delete_conduct')->delete('/admin/{conduct_de}', 'AdminController@destroy');
+Route::name('delete_conduct')->delete('/admin/conduct_de', 'AdminController@destroy');
 Route::name('verif_perfil')->put('admin/verif', 'ConductController@activar_profile');
 /*
 RUTAS PUBLICAS

@@ -22,7 +22,7 @@
 						<td>Nombre</td>
 						
 						<td>Ultimo Pago</td>
-						<td>Plan</td>
+						<td>Numero de Referencia</td>
 						<td>Dias restantes</td>
 						<td>Fecha de Venc.</td>
 						<td>Estado</td>

@@ -12,7 +12,9 @@ class ConductController extends Controller
     
 	public function create(){
 
-		return view('conductor.create');
+		$conduct = new Conduct;
+
+		return view('conductor.create')->with(['conduct' => $conduct]);
 
 	}
 
@@ -45,6 +47,34 @@ class ConductController extends Controller
 
 
 		return redirect()->route('home');
+
+	}
+
+	public function edit (){
+		return view('conductor.edit');
+	}
+
+	public function update (Request $request){
+
+		$this->validate($request, [
+
+			'car_m' => 'required',
+			'car_ma' => 'required',
+			'car_state' => 'required|string|max:255',
+			'short' => 'required',
+			'body' => 'required',
+			'phone' => 'required'
+			]);
+
+		$conduct = Conduct::find(Auth::user()->id);
+
+		$conduct->update(
+
+			$request->only('car_m','car_ma','car_state','short','body','phone')
+
+		);
+
+		session()->flash('message', 'Perfil Actualizado Correctamente ');
 
 	}
 

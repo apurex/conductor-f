@@ -39,7 +39,13 @@
 	
 	                @endif
 	                    
-						<form class="form-horizontal" action="{{ Route('conduct_store')}}" method="POST">
+	                    <div class="">
+				            @include('layouts._messages')
+				        </div>
+
+				        @include('conductor._edit', ['conduct' => $conduct])
+
+						<!-- <form class="form-horizontal" action="{{ Route('conduct_store')}}" method="POST">
 	
 						{{ csrf_field() }}
 	
@@ -93,7 +99,7 @@
 						    </div>
 						  </div>
 	
-						</form>
+						</form> -->
 	
 	                </div>
 	            </div>
