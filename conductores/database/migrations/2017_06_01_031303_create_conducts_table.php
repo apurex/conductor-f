@@ -22,6 +22,7 @@ class CreateConductsTable extends Migration
             $table->mediumText('short');
             $table->text('body');
             $table->string('phone');
+            $table->boolean('completed')->default(0);
 
             $table->boolean('verif')->default(0);
             $table->string('name');
