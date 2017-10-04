@@ -31,7 +31,12 @@ p {
 }
 
 .imagen-car {
-	padding: 45px;
+	
+	width: 100px;
+}
+
+.button-margin {
+	margin-bottom: 50px;
 }
 
 /** LOADER */

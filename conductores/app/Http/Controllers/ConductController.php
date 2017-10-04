@@ -12,7 +12,7 @@ class ConductController extends Controller
     
 	public function create(){
 
-		$conduct = new Conduct;
+		$conduct = Conduct::find(Auth::user()->id);
 
 		return view('conductor.create')->with(['conduct' => $conduct]);
 
@@ -92,7 +92,10 @@ class ConductController extends Controller
 
 		);
 
+		$conduct->completed = 1;
+
 		session()->flash('message', 'Perfil Actualizado Correctamente ');
+		return back();
 
 	}
 
