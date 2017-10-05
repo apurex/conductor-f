@@ -12,9 +12,10 @@ class ConductController extends Controller
     
 	public function create(){
 
-		$conduct = Conduct::find(Auth::user()->id);
+		$conduct = Conduct::where('user_id', Auth::user()->id)->get();
+    	//dd($conduct);
 
-		return view('conductor.create')->with(['conduct' => $conduct]);
+		return view('conductor.create')->with(['conduct' => $conduct->first()]);
 
 	}
 
@@ -84,7 +85,9 @@ class ConductController extends Controller
 			'phone' => 'required'
 			]);
 
-		$conduct = Conduct::find(Auth::user()->id);
+		$conduct = Conduct::where('user_id',Auth::user()->id)->first();
+
+		$conduct->completed = 1;
 
 		$conduct->update(
 
@@ -92,7 +95,7 @@ class ConductController extends Controller
 
 		);
 
-		$conduct->completed = 1;
+		//$conduct->completed = 1;
 
 		session()->flash('message', 'Perfil Actualizado Correctamente ');
 		return back();

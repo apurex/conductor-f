@@ -42,7 +42,7 @@
 						    <label for="inputPassword3" class="col-sm-2 control-label">Descripcion De su Servicio</label>
 						    <div class="col-sm-10">
 	
-						      <textarea class="form-control" name="body" rows="3" value="{{$conduct->body}}"></textarea>
+						      <textarea class="form-control" name="body" rows="3"  placeholder="Da una breve descripcion de tu servicio">{{$conduct->body}}</textarea>
 	
 						    </div>
 						  </div>

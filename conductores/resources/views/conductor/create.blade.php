@@ -21,7 +21,13 @@
 	    <div class="row">
 	        <div class="col-md-8 col-md-offset-2">
 	            <div class="panel panel-default">
-	                <div class="panel-heading">Completar Perfil</div>
+	                <div class="panel-heading">
+	                @if( $conduct->completed == 1 )
+	                	Editar
+	                @else
+	                    Completar
+	                @endif
+	                Perfil</div>
 	
 	                <div class="panel-body">
 	
@@ -44,6 +50,7 @@
 				        </div>
 
 				        @include('conductor._edit')
+				       
 
 						<h2 class="text-center">Por Favor Subir Fotos del Vehiculo </h2>
 

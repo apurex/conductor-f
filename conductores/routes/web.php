@@ -17,8 +17,8 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     
-    Route::name('conduct_create')->get('/conduct_create', 'ConductController@create');
-    Route::name('conduct_update')->put('conduct_create/update', 'ConductController@update');
+    Route::name('conduct_create')->get('/conduct/conductor', 'ConductController@create');
+    Route::name('conduct_update')->put('conduct/conductor/update', 'ConductController@update');
 	Route::name('conduct_store')->post('/conduct', 'ConductController@store');
 	Route::name('conduct_img')->post('/conductimg', 'ConductController@img_car');
 
