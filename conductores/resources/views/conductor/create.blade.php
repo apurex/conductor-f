@@ -56,16 +56,14 @@
 
 							@endphp
 
-								@for ($i = 1; $i <= $coun; $i++)
+								@for ($i = 1; $i <= 4; $i++)
 								<div class="row button-margin">
 										<div class="col-md-2">
 											<div class="imagen imagen-car">
 
+												@if(Storage::disk('local')->exists($directory . '/car_' . $i . '.jpg'))
 
-
-												@if(Storage::disk('public')->exists($directory . '/' . $files[$i]))
-
-													<img src="{{ url($directory)}}/{{$files[$i]}}" alt="" class="img-resposive">
+													<img src="{{ url($directory)}}/car_{{$i}}.jpg" alt="" class="img-resposive">
 
 												@else 
 													
