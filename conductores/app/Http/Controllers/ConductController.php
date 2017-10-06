@@ -87,14 +87,15 @@ class ConductController extends Controller
 
 		$conduct = Conduct::where('user_id',Auth::user()->id)->first();
 
-		$conduct->completed = 1;
+		
 
 		$conduct->update(
 
 			$request->only('car_m','car_ma','car_state','short','body','phone')
 
 		);
-
+			$conduct->completed = 1;
+			$conduct->save();
 		//$conduct->completed = 1;
 
 		session()->flash('message', 'Perfil Actualizado Correctamente ');
