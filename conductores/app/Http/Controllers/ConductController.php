@@ -105,7 +105,8 @@ class ConductController extends Controller
 
 	public function index (){
 
-		$conducts = Conduct::all();
+		//$conducts = Conduct::all();
+		$conducts = Conduct::where('completed',1)->get();
 
 		return view('conductor.conducts_index')->with(['conducts' => $conducts]);
 

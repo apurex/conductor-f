@@ -113,7 +113,15 @@
                               </form>
 
                           </div>
-
+@if(Auth::user()->roles==1)
+@php
+$conduct = App\Conduct::where('user_id',Auth::user()->id)->first();
+@endphp
+<div class="row">
+  <h3>Editar tus datos de Conductor</h3>
+  @include('conductor._edit')
+</div>
+@endif
                           </div>
                       </div>
                   </div>

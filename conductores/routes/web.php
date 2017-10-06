@@ -47,7 +47,7 @@ Route::name('create_comment_path')->get('/comments/create', 'CommentController@c
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::name('profile')->get('/profile_show','HomeController@profile_show');
+Route::name('profile')->get('/profile','HomeController@profile_show');
 
 Route::name('profile_edit')->get('/profile/edit', 'HomeController@profile_edit');
 

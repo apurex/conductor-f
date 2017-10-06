@@ -33,11 +33,8 @@
 						   <img src="img/profile.png" alt="">
 
 						@endif
-						
-							<div class="">
-								<a href="#" class="btn btn-warning center-block no-float" title="">CONTACTAR</a>
-							</div>
 
+	
 						</div>
 
 						<div class="col-md-3 text-capitalize">
@@ -49,17 +46,17 @@
 
 						</div>
 
-
+						@if(Auth::user()->tipo==1)
 						<div class="col-md-3 text-capitalize">
 							
 						<h2>Datos Del Auto</h2>
 
-						<p>Auto: FIAT</p>
+						<p>Auto: Corsa {{Auth::user()->tipo==1}}</p>
 						<p>Modelo: Palio</p>
 						<p>Estado: Optimo</p>
 
 						</div>
-
+						@endif
 					</div>
 
 					<div class="row">

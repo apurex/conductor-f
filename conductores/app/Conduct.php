@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use app\User;
+use App\User;
 
 class Conduct extends Model
 {
