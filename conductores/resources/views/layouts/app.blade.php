@@ -66,13 +66,16 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos <span class="caret"></span></a>
-<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-  <li><a href="{{ route('payouts_path') }}">Mis Pagos</a></li>
-  <li><a href="{{ route('create_payout_path') }}">Pagar</a></li>
-</ul>
-</li>
+                            @if(Auth::user()->roles == 1)
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos <span class="caret"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                                  <li><a href="{{ route('payouts_path') }}">Mis Pagos</a></li>
+                                  <li><a href="{{ route('create_payout_path') }}">Pagar</a></li>
+                                </ul>
+                                </li>
+                            @endif
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

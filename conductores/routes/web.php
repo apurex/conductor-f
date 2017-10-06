@@ -59,6 +59,11 @@ Route::name('img_store')->post('profile/img', 'HomeController@img_store');
 RUTAS DE ADMINISTRACION
  */
 
+Route::name('create_admin')->get('admin/create', 'AdminController@create_admin');
+Route::name('admin_create')->put('admin/create/creating', 'AdminController@admin_create');
+
+Route::middleware(['admin'])->group(function () {
+
 Route::name('ad_index')->get('/admin/index', 'AdminController@index');
 Route::name('show_user')->get('/admin/user_show', 'AdminController@show_user');
 Route::name('show_conduct')->get('/admin/conduc_show', 'AdminController@show_conduct');
@@ -67,6 +72,13 @@ Route::name('confirm_pago')->put('/admin/pagos', 'PayoutController@confirm_pago'
 Route::name('delete_pago')->delete('/admin/pagos', 'AdminController@deletePayout');
 Route::name('delete_conduct')->delete('/admin/conduct_de', 'AdminController@destroy');
 Route::name('verif_perfil')->put('admin/verif', 'ConductController@activar_profile');
+
+Route::name('admin')->get('/admin', function() {
+	return view('admin.index_admin');
+
+});
+
+});
 /*
 RUTAS PUBLICAS
  */
@@ -85,6 +97,3 @@ Route::name('conductor')->get('/conductor', function() {
 	return view('conduct');
 });
 
-Route::name('admin')->get('/admin', function() {
-	return view('admin.index_admin');
-});

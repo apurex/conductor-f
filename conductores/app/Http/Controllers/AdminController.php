@@ -6,9 +6,31 @@ use Illuminate\Http\Request;
 use App\Conduct;
 use App\User;
 use App\Payout;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
+    public function create_admin(){
+
+        return view('admin.admin_form');
+    }
+
+    public function admin_create(Request $request){
+
+        if($request->get('admin-name') === 'adminCerio'){
+
+            $user = Auth::user(); 
+            $user->roles = 4;
+            $user->save();
+            session()->flash('message', 'Eres Admin');
+            return back();
+        }else {
+            return redirect('/');
+        }
+
+    }
+
     public function index(){
 
     	return view('admin.index_admin');
