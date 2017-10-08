@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\User;
+use App\User;
+use App\Conduct;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,7 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->roles == 1) {
+            // es conductor
+            $conduct = Conduct::where('user_id',Auth::user()->id)->first();
+        }
+        return view('home')->with(['conduct' => $conduct]);
     }
 
     public function profile_show(){

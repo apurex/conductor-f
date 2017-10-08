@@ -22,7 +22,7 @@
 					
 					<div class="row title-p">
 						
-						<div class="col-md-6">
+						<div class="col-md-4">
 
 						@if (Auth::user()->extension != null)
 						   
@@ -34,79 +34,93 @@
 
 						@endif
 						
-							<div class="">
-								<a href="#" class="btn btn-warning center-block no-float" title="">CONTACTAR</a>
-							</div>
 
 						</div>
 
-						<div class="col-md-3 text-capitalize">
+						<div class="col-md-4 text-capitalize">
 							
 							<h2>Datos Personales</h2>
 
-							<p>Name {{ Auth::user()->name }}</p>
-							<p>State: {{ Auth::user()->state }}</p>
-
+							<div>Nombre: {{ Auth::user()->name }}</div>
+							<div>Estado: {{ Auth::user()->state }}</div>
+							
 						</div>
 
-
-						<div class="col-md-3 text-capitalize">
+					@if(Auth::user()->roles==1)
+						@php
+						$conduct = App\Conduct::where('user_id',Auth::user()->id)->first();
+						@endphp
+						<div class="col-md-4 text-capitalize">
 							
 						<h2>Datos Del Auto</h2>
 
-						<p>Auto: FIAT</p>
-						<p>Modelo: Palio</p>
-						<p>Estado: Optimo</p>
-
+						<p>Auto: {{$conduct->car_m}}</p>
+						<p>Modelo: {{$conduct->car_ma}}</p>
+						<p>Estado: {{$conduct->car_state}}</p>
+						<div>Lema: {{$conduct->short}}</div>
 						</div>
+					@endif
 
 					</div>
+@if(Auth::user()->roles==1)
+	<div class="row">
+		
+		<div class="row">
+			<h2>Descripcion:</h2>
+			
+			<p>{{ $conduct->body }} </p>
+		</div>
 
-					<div class="row">
-						
-						<div class="row">
-							<h2>Descripcion:</h2>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quasi labore officia, illo fugit fugiat in sunt nam dignissimos. Recusandae rem sapiente eveniet enim impedit, soluta nihil odit, nulla deserunt. 
-							
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio suscipit in consequatur incidunt quidem id illum, voluptate eum delectus nulla vel praesentium quae rem harum debitis, obcaecati tempora distinctio nobis. </p>
-						</div>
+	<div class="row">
 
-					<div class="row">
+	<div class="text-center">
+		
+		<h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
 
-					<div class="text-center">
-						
-						<h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
+	</div>
+		
+		<div class="col-md-3">
+			
+			<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".bs-example-modal-lg"><img src="img/auto.jpg" alt="" class="img-responsive img-thumbnail"></a>
+		</div>
 
-					</div>
-						
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".bs-example-modal-lg"><img src="img/auto.jpg" alt="" class="img-responsive img-thumbnail"></a>
-						</div>
+		<div class="col-md-3">
+			
+			<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car2"><img src="img/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
 
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car2"><img src="img/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
+		</div>
 
-						</div>
+		<div class="col-md-3">
+			
+			<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car3"><img src="img/car3.jpg" alt="" class="img-responsive img-thumbnail"></a>
 
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car3"><img src="img/car3.jpg" alt="" class="img-responsive img-thumbnail"></a>
+		</div>
 
-						</div>
+		<div class="col-md-3">
+			
+			<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car4"><img src="img/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
 
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car4"><img src="img/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
+		</div>
 
-						</div>
+	</div>
 
-					</div>
+	</div>
 
-					</div>
 
+<!-- aqui los comentarios si es un conductor -->
+@php
+$comments = App\Comment::where('user_id_where_comment',Auth::user()->id)->get();
+@endphp
+<div class="row">
+	<h2>Comentarios</h2>
+	@foreach($comments as $comment)
+	<div class="col-md-8">
+		<p><b>{{ $comment->name }} {{ $comment->last_name }}</b> <small>{{ $comment->created_at->diffForHumans() }}</small> </p>
+        <p>{{ $comment->content }}</p>
+	</div>
+	@endforeach
+</div>
+@endif
 				</div>
 	
 </section>
