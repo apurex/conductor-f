@@ -57,6 +57,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li> <a href="{{ route('conducts') }}">Conductores</a> </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

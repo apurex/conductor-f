@@ -81,9 +81,10 @@ Route::name('admin')->get('/admin', function() {
 });
 /*
 RUTAS PUBLICAS
- */
+*/
 
 Route::name('conducts')->get('/conducts', 'ConductController@index');
+Route::name('conducts_buscar')->post('/conducts/edo', 'ConductController@search');
 
 Route::get('/', function () {
     return view('welcome');

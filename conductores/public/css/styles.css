@@ -282,6 +282,11 @@ p {
 	font-size: 0.5em;
 }
 
+.conduct-filtrar{
+	margin-top: 22px;
+    margin-bottom: 11px;
+}
+
 footer {
 	background-color: #F4D03F;
 	min-height: 50px;

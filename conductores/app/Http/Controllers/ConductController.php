@@ -128,4 +128,24 @@ class ConductController extends Controller
             return back();
     }
 
+    public function search(Request $request){
+
+    	//if ($request->ajax()) {
+    		$conducts = Conduct::where([['state',$request->state],
+    			['completed',1]])->get();
+    		/*$conductores = [];
+    		foreach ($conducts as $conduct) {
+    			$conductores[] = array('name' => $conduct->name, 
+    				'last_name' => $conduct->last_name,
+    				'short' => $conduct->short,
+    				'id' => $conduct->id,
+    				'user_id' => $conduct->user_id);
+    		}
+    		//dd($conductores);
+    		return json_encode($conductores);
+    	//}*/
+    	return view('conductor.conducts_index')->with(['conducts' => $conducts]);
+    	
+    }
+
 }
