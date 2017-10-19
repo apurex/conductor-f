@@ -29,8 +29,10 @@ class HomeController extends Controller
         if (Auth::user()->roles == 1) {
             // es conductor
             $conduct = Conduct::where('user_id',Auth::user()->id)->first();
+            return view('home')->with(['conduct' => $conduct]);
+        }else {
+        return view('home');
         }
-        return view('home')->with(['conduct' => $conduct]);
     }
 
     public function profile_show(){
