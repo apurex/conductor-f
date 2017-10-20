@@ -22,7 +22,7 @@
 					
 					<div class="row title-p">
 						
-						<div class="col-md-6">
+						<div class="col-md-4">
 
 						@if (Auth::user()->extension != null)
 						   
@@ -33,31 +33,93 @@
 						   <img src="{{ url('img/')}}/profile.png" alt="">
 
 						@endif
-						
+						@if(Auth::user()->roles != 1)
 							<div class="">
 								<a href="#" class="btn btn-warning center-block no-float" title="">CONTACTAR</a>
 							</div>
+                        <div>
+@php
+$votos = App\Score::where("conduct_id","=",$conduct->id)->get();
+$totalvotos = count($votos);
+@endphp
 
+    <div class="col-sm-12"><form action="{{Route('store_score_path')}}" method="post">
+    {{ csrf_field() }}
+Votar:
+                        <div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-danger">
+    <input type="radio" name="score" id="option1" value="-1" autocomplete="off"> <i class="fa fa-minus"></i>
+  </label>
+  <label class="btn btn-warning">
+    <input type="radio" name="score" id="option2" value="0" autocomplete="off"> <i class="fa fa-circle-o"></i>
+  </label>
+  <label class="btn btn-success">
+    <input type="radio" name="score" id="option3" value="1" autocomplete="off"> <i class="fa fa-plus"></i>
+  </label>
+  <input type="hidden" name="conduct_id" value="{{$conduct->id}}">
+  <input type="hidden" name="review" value="">
+</div>
+<button type="submit" class="btn btn-default">Votar</button></form>
+</div> @endif<div class="col-sm-12">
+
+@php
+if(isset($votos)&&count($votos)>0){
+$negativos=0;
+$positivos=0;
+$neutros=0;
+foreach($votos as $voto){
+
+    if($voto->score == -1){
+        $negativos++;
+    }elseif($voto->score == '1'){
+        $positivos++;
+
+    }else{
+        $neutros++;
+    }
+}
+if($totalvotos>0){
+$negativos = $negativos/$totalvotos*100;
+$positivos = $positivos/$totalvotos*100;
+$neutros = $neutros/$totalvotos*100;
+}
+@endphp
+                            Puntuacion: Total Votos: {{$totalvotos}}<div class="progress">
+  <div class="progress-bar progress-bar-danger" style="width: {{$negativos}}%">
+    <span class="sr-only">{{$negativos}} mal (success)</span>
+  </div>
+  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{$neutros}}%">
+    <span class="sr-only">{{$neutros}} Complete (warning)</span>
+  </div>
+  <div class="progress-bar progress-bar-success" style="width: {{$positivos}}%">
+    <span class="sr-only">{{$positivos}} Complete (danger)</span>
+  </div>@php } @endphp
+</div></div>
+
+                        </div>
+                        
 						</div>
 
-						<div class="col-md-3 text-capitalize">
+						<div class="col-md-4 text-capitalize">
 							
 							<h2>Datos Personales</h2>
+                    <dl class="dl-horizontal">
+                          <dt>Name:</dt><dd>{{ $conduct->name }}</dd>
+                          <dt>State:</dt><dd>{{ $conduct->state }}</dd>
 
-							<p>Name: {{ $conduct->name }}</p>
-							<p>State: {{ $conduct->state }}</p>
-
+                        </dl>
 						</div>
 
 
-						<div class="col-md-3 text-capitalize">
+						<div class="col-md-4 text-capitalize">
 							
 						<h2>Datos Del Auto</h2>
 
-						<p>Auto: {{ $conduct->car_m }}</p>
-						<p>Modelo: {{ $conduct->car_ma }}</p>
-						<p>Estado: {{ $conduct->car_state }}</p>
-
+                        <dl class="dl-horizontal">
+                          <dt>Auto:</dt><dd>{{ $conduct->car_m }}</dd>
+                          <dt>Modelo:</dt><dd>{{ $conduct->car_ma }}</dd>
+                          <dt>Estado:</dt><dd>{{ $conduct->car_state }}</dd>
+                        </dl>
 						</div>
 
 					</div>
@@ -153,7 +215,7 @@
         @endphp
         
         @foreach($comments as $comment)
-             <div class="row">
+             <div class="container-fluid">
                 <div class="col-md-12">
                     <h2>
                         
@@ -171,12 +233,13 @@
                     <p><b>{{ $comment->name }} {{ $comment->last_name }}</b> <small>{{ $comment->created_at->diffForHumans() }}</small> </p>
                     <p>{{ $comment->content }}</p>
                 </div>
-            </div>
+             </div>
             <hr>
         @endforeach
     <!--- Formulario de comentario -->
-
-
+<div class="container-fluid">
+<div class="col-sm-12">
+    @if(Auth::user()->roles != 1)
         @if($conduct->user_id != Auth::user()->id)
             @php
                 $comment = new App\Comment;
@@ -184,20 +247,10 @@
             @endphp
             @include('comment._form', ['comment' => $comment])
         @endif
-
+      @endif
     @endif
-    
-	<section class="bottom">
-    <div class="container">
-        <div class="row">
-            
-            <div class="">
-                <p> &nbsp; </p>
-            </div>
+</div>
+</div>
 
-        </div>
-    </div>
-        
-    </section>
 
 @endsection

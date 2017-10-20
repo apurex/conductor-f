@@ -33,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::name('delete_payout_path')->delete('/payouts', 'PayoutController@delete');
 	Route::name('create_payout_path')->get('/payouts/create', 'PayoutController@create');
 	Route::name('edit_payout_path')->get('/payouts/edit', 'PayoutController@edit');
+
+	Route::name('store_score_path')->post('/score', 'ScoreController@store');
+	Route::name('create_score_path')->get('/score/create', 'PayoutController@create');
 });
 
 // Rutas de los comentarios, falta acomodar lo de editar

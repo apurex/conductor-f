@@ -19,22 +19,22 @@ class ScoreController extends Controller
 
 		$score->fill(
 
-			$request->only('score','review','conduct_id')
+			$request->only('score','conduct_id')
 
 		);
 		
 		$score->user_id = $request->user()->id;
-		
+		$score->review = '';
         $score->save();
 
-		return redirect()->route('scores');;
+		return back();
 
 	}
 
 	public function update(Payout $score, Request $request)
     {
         $score->update(
-           $request->only('score','review')
+           $request->only('score','review','conduct_id')
         );
 
         //session()->flash('message', 'score Updated!');

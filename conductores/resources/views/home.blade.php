@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        @if($conduct->completed == 0)
+        @if(isset($conduct)&&$conduct->completed == 0)
         <div class="alert alert-warning"><a href="{{ route('conduct_create') }}">Completa tu perfil</a> como conductor para que aparezcas en el <a href="{{ route('conducts') }}">catalogo de conductores</a></div>
         @endif
             <div class="panel panel-default">
