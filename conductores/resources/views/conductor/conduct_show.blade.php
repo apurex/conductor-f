@@ -43,24 +43,33 @@ $votos = App\Score::where("conduct_id","=",$conduct->id)->get();
 $totalvotos = count($votos);
 @endphp
 
-    <div class="col-sm-12"><form action="{{Route('store_score_path')}}" method="post">
-    {{ csrf_field() }}
-Votar:
-                        <div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-danger">
-    <input type="radio" name="score" id="option1" value="-1" autocomplete="off"> <i class="fa fa-minus"></i>
-  </label>
-  <label class="btn btn-warning">
-    <input type="radio" name="score" id="option2" value="0" autocomplete="off"> <i class="fa fa-circle-o"></i>
-  </label>
-  <label class="btn btn-success">
-    <input type="radio" name="score" id="option3" value="1" autocomplete="off"> <i class="fa fa-plus"></i>
-  </label>
-  <input type="hidden" name="conduct_id" value="{{$conduct->id}}">
-  <input type="hidden" name="review" value="">
-</div>
-<button type="submit" class="btn btn-default">Votar</button></form>
-</div> @endif<div class="col-sm-12">
+    @if($user_voto === null)
+
+    <div class="col-sm-12">
+
+      <form action="{{Route('store_score_path')}}" id="form_voto" method="post">
+        {{ csrf_field() }}
+         Votar:
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-danger">
+              <input type="radio" name="score" id="option1" required value="-1" autocomplete="off"> <i  class="fa fa-minus"></i>
+            </label>
+            <label class="btn btn-warning">
+              <input type="radio" name="score" id="option2" required value="0" autocomplete="off"> <i  class="fa fa-circle-o"></i>
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="score" id="option3" required value="1" autocomplete="off"> <i  class="fa fa-plus"></i>
+            </label>
+            <input type="hidden" name="conduct_id" value="{{$conduct->id}}">
+            <input type="hidden" name="review" value="">
+          </div>
+          <button type="submit" class="btn btn-default">Votar</button></form>
+    </div> 
+    @endif
+
+        @endif
+
+<div class="col-sm-12">
 
 @php
 if(isset($votos)&&count($votos)>0){
@@ -124,50 +133,57 @@ $neutros = $neutros/$totalvotos*100;
 
 					</div>
 
-					<div class="row">
-						
-						<div class="row">
-							<h2>Descripcion:</h2>
-							
-							<p> {{ $conduct->body }} </p>
-						</div>
+					
 
-					<div class="row">
+            <div class="container">
+<div class="row">
+              <div class="row">
+                <div class="container">
+                  <h2>Descripcion:</h2>
+              
+              <p> {{ $conduct->body }} </p>
+                </div>
+              
+            </div>
 
-					<div class="text-center">
-						
-						<h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
+          <div class="row">
+
+            <div class="container">
+              <div class="text-center">
+            
+            <h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
+
+          </div>
+            
+            <div class="col-md-3">
+              
+              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".bs-example-modal-lg"><img src="{{ url('img/')}}/auto.jpg" alt="" class="img-responsive img-thumbnail"></a>
+            </div>
+
+            <div class="col-md-3">
+              
+              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car2"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
+
+            </div>
+
+            <div class="col-md-3">
+              
+              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car3"><img src="{{ url('img/')}}/car3.jpg" alt="" class="img-responsive img-thumbnail"></a>
+
+            </div>
+
+            <div class="col-md-3">
+              
+              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car4"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
+
+            </div>
+            </div>
+
+          </div>
+
+            </div>
 
 					</div>
-						
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".bs-example-modal-lg"><img src="{{ url('img/')}}/auto.jpg" alt="" class="img-responsive img-thumbnail"></a>
-						</div>
-
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car2"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
-						</div>
-
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car3"><img src="{{ url('img/')}}/car3.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
-						</div>
-
-						<div class="col-md-3">
-							
-							<a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car4"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
-						</div>
-
-					</div>
-
-					</div>
-
-				</div>
 	
 </section>
 
@@ -251,6 +267,5 @@ $neutros = $neutros/$totalvotos*100;
     @endif
 </div>
 </div>
-
 
 @endsection

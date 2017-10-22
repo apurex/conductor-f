@@ -115,8 +115,10 @@ class ConductController extends Controller
 	public function show(Conduct $conduct)
     {
     	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);
+    	$id = Auth::user()->id;
+    	$user_voto = \App\Score::where([['user_id',$id],['conduct_id', $conduct->id]])->first();
 
-        return view('conductor.conduct_show')->with(['conduct' => $conduct]);
+        return view('conductor.conduct_show')->with(['conduct' => $conduct, 'user_voto' => $user_voto]);
     }
 
     public function activar_profile(Request $conduct) {
