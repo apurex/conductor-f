@@ -53,4 +53,35 @@
 						    </div>
 						  </div>
 	
-</form>
+	</form>
+
+			<h3 class="text-center">Fotos Del Vehiculo Maximo 4</h3>
+			
+
+			@for($i=1;$i<=4;$i++)
+
+
+			<div class="col-md-3">
+
+					<div class="row">
+					  @if(isset($carros['car_'.$i]))
+					    <div class="thumbnail" id="thumb{{$i}}">
+					      <img src="{{url($carros['car_'.$i])}}" class="car_im{{$i}}" alt="...">
+					      <div class="caption">
+							<button type="button" class="btn btn-primary text-center" onclick="ocultar({{$i}})" id="car_button{{$i}}">Actualizar</button>
+					      </div>
+					    </div>
+					  @endif
+							 <form action="{{ Route('conduct_img')}}" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="dropzone @if(isset($carros['car_'.$i])) hidden @endif" id="image{{$i}}">
+										{{ csrf_field() }}
+										 
+								 <input type="hidden" name="num" value="{{$i}}">
+							</form>
+					</div>
+
+				
+			</div>
+			@endfor
+			
+
+				

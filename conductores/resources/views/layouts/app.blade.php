@@ -32,6 +32,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Raleway" rel="stylesheet">
 
+@yield('css')
+
 </head>
 <body>
     <div id="app">

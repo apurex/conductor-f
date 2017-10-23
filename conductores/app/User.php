@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function conduct(){
 
-        return $this->belongsTo(Conduct::class);
+        return $this->hasOne('App\Conduct');
 
     }
 }

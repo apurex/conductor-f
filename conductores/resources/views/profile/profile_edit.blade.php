@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<link href="{{ asset('css/dropzone.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/basic.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <section class="top">
@@ -145,4 +150,48 @@ $conduct = App\Conduct::where('user_id',Auth::user()->id)->first();
         
     </section>
 
+@endsection
+
+@section('script')
+<script src="{{ asset('js/dropzone-amd-module.min.js') }}"></script>
+<script src="{{ asset('js/dropzone.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+
+
+<script type="text/javascript">
+        Dropzone.options.image1 = {
+            maxFilesize         :       2,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            //maxFiles: 1,
+            uploadMultiple: false,
+            init: function() {
+              this.on('drop', function(event) {
+                $("#image .dz-preview").remove()
+              });
+            }
+        };
+var myDropzone = new Dropzone("#image1");
+  myDropzone.on("drop", function() {
+    /* Maybe display some more file information on your page */
+ 
+  });
+var myDropzone3 = new Dropzone("#image3", { url: "{{ Route('conduct_img')}}",acceptedFiles: ".jpeg,.jpg,.png,.gif",uploadMultiple: false});
+myDropzone3.on("drop", function() {
+  $('#image3 .dz-preview').remove()
+});
+
+var myDropzone2 = new Dropzone("#image2", { url: "{{ Route('conduct_img')}}",acceptedFiles: ".jpeg,.jpg,.png,.gif", uploadMultiple: false});
+  myDropzone2.on("drop", function() {
+    /* Maybe display some more file information on your page */
+  $('#image2 .dz-preview').remove()
+  });
+
+var myDropzone4 = new Dropzone("#image4", { url: "{{ Route('conduct_img')}}",
+  acceptedFiles: ".jpeg,.jpg,.png,.gif",
+  uploadMultiple: false});
+  myDropzone4.on("drop", function() {
+    /* Maybe display some more file information on your page */
+  $('#image4 .dz-preview').remove()
+  });
+    </script>
 @endsection

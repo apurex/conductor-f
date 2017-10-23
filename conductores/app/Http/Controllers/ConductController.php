@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Conduct;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ConductController extends Controller
 {
@@ -57,15 +58,17 @@ class ConductController extends Controller
             'file' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
-        $nro = $request->get('nro');
+        $nro = $request->get('num');
 
         $user = Auth::user();
         $file = $request->file('file');
         $url = $file->getClientOriginalExtension();
 
-        $path = $request->file('file')->storeAs('public/imgs/cars/car_' . Auth::user()->id, 'car_' . $nro . '.' . $url);
+        $path = $request->file('file')->storeAs('public/imgs/cars/car_' . Auth::user()->id, 'car_' . $nro . '.' . 'jpg');
 
-        return back();
+        return response()->json(['success'=>$path]);
+
+        //return back();
 
 	}
 
@@ -117,8 +120,17 @@ class ConductController extends Controller
     	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);
     	$id = Auth::user()->id;
     	$user_voto = \App\Score::where([['user_id',$id],['conduct_id', $conduct->id]])->first();
+    	$extension = Conduct::find($conduct->id)->user()->first()->extension;
 
-        return view('conductor.conduct_show')->with(['conduct' => $conduct, 'user_voto' => $user_voto]);
+    	$ruta = 'public/imgs/cars/car_' . $conduct->user_id;
+    	$dir = Storage::files($ruta);
+    	$dir2 = [];
+
+    	for ($i=0; $i < count($dir) ; $i++) { 
+    		$dir2[]=str_replace("public","storage",$dir[$i]);
+    	}
+
+        return view('conductor.conduct_show')->with(['conduct' => $conduct, 'user_voto' => $user_voto, 'extension' => $extension, 'carros' => $dir2]);
     }
 
     public function activar_profile(Request $conduct) {

@@ -24,9 +24,9 @@
 						
 						<div class="col-md-4">
 
-						@if (Auth::user()->extension != null)
+						@if ($extension != null)
 						   
-							<img src="{{ url('storage/imgs/')}}/{{Auth::user()->id}}.{{Auth::user()->extension}}" alt="" class="img-responsive">
+							<img src="{{ url('storage/imgs/')}}/{{$conduct->user_id}}.{{$extension}}" alt="" class="img-responsive">
 
 						@else
 						    
@@ -154,29 +154,21 @@ $neutros = $neutros/$totalvotos*100;
             <h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
 
           </div>
-            
+
+          @for ($i = 0; $i < count($carros); $i++)
+          
             <div class="col-md-3">
-              
-              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".bs-example-modal-lg"><img src="{{ url('img/')}}/auto.jpg" alt="" class="img-responsive img-thumbnail"></a>
+               <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car_{{$i}}"><img src="{{url($carros[$i])}}" alt="" class="img-responsive img-thumbnail"></a>
             </div>
 
-            <div class="col-md-3">
-              
-              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car2"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
+            <div class="modal fade car_{{$i}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <img src="{{ url($carros[$i]) }}" alt="" class="img-responsive">
+                </div>
+              </div>
             </div>
-
-            <div class="col-md-3">
-              
-              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car3"><img src="{{ url('img/')}}/car3.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
-            </div>
-
-            <div class="col-md-3">
-              
-              <a href="#myLargeModalLabel" class="" data-toggle="modal" data-target=".car4"><img src="{{ url('img/')}}/car2.jpg" alt="" class="img-responsive img-thumbnail"></a>
-
-            </div>
+          @endfor
             </div>
 
           </div>
