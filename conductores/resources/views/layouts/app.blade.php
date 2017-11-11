@@ -51,7 +51,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Venecars') }}
                     </a>
                 </div>
 
@@ -123,7 +123,7 @@
         @yield('content')
 
     <footer>
-        &nbsp;
+        <p style="padding-top: 5px" class="text-center">Venecars - &copy; {{date('Y')}}</p>
     </footer>
 
     </div>

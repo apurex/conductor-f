@@ -2,23 +2,8 @@
 
 @section('content')
 
-<section class="top">
-
-<div class="container">
-    <div class="row">
-        
-        <div class="">
-            <p> &nbsp; </p>
-        </div>
-
-    </div>
-</div>
-    
-</section>
-
 <section class="center">
-
-        <div class="container">
+    <div class="container">
 
         <div class="row">
             
@@ -39,7 +24,7 @@
 
                 <br>
 
-                <p> <span class="fonts-top2"> ¡¡Qué esperas!! </span> <a href="#" class="btn btn-warning">Unirme YA</a> </p>
+                <p> <span class="fonts-top2"> ¡¡Qué esperas!! </span> <a href="#" class="btn btn-success btn-lg">Unirme YA</a> </p>
 
                 <br>
 
@@ -61,7 +46,7 @@
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                       <div class="panel-body">
-                        <p>Sencillo, solo rellena el formulario y crea tu cuenta, posteriormente veras un link para completar tu perfil como chofer. <a href="#" class="btn btn-warning">Unirme</a></p>
+                        <p>Sencillo, solo rellena el formulario y crea tu cuenta, posteriormente veras un link para completar tu perfil como chofer. <a href="#" class="btn btn-success">Unirme</a></p>
                       </div>
                     </div>
                   </div>
@@ -121,21 +106,9 @@
 
     </div>
             
-        </div>
+  </div>
 </section>
 
 
-    <section class="bottom">
-    <div class="container">
-        <div class="row">
-            
-            <div class="">
-                <p> &nbsp; </p>
-            </div>
-
-        </div>
-    </div>
-        
-    </section>
 
 @endsection

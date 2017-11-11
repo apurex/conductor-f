@@ -23,9 +23,9 @@
 
             <div class="row btn-loader">
                 
-                <a href="{{ route('viajero') }}" title="" class="btn btn-warning btn-margin">Como Funcionaa</a>
+                <a href="{{ route('viajero') }}" title="" class="btn btn-primary btn-margin">Como Funciona</a>
                 @if(Auth::check() == false)
-                <a href="{{ route('register') }}" title="" class="btn btn-warning btn-margin">Unirme</a>
+                <a href="{{ route('register') }}" title="" class="btn btn-primary btn-margin">Unirme</a>
                 @endif
 
             </div>
@@ -58,13 +58,13 @@
                 <div class="col-md-6">
                 <img src="img/viajero.jpg" alt="">
 
-                <a href="{{ route('viajero') }}" title="" class="btn btn-warning">VIAJERO</a>
+                <a href="{{ route('viajero') }}" title="" class="btn btn-primary">VIAJERO</a>
                 </div>
 
                 <div class="col-md-6">
                 <img src="img/conductor.jpg" alt="">
 
-                <a href="{{ route('conductor') }}" title="" class="btn btn-warning">CONDUCTOR</a>
+                <a href="{{ route('conductor') }}" title="" class="btn btn-primary">CONDUCTOR</a>
                 </div>
 
             </div>

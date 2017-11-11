@@ -23,8 +23,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::name('conduct_img')->post('/conduct_img', 'ConductController@img_car');
 
 	
-	Route::name('conduct_show')->get('/conducts/{conduct}', 'ConductController@show');
-
+	
 	// Pagos
 	Route::name('payouts_path')->get('/payouts', 'PayoutController@index');
 
@@ -88,6 +87,7 @@ RUTAS PUBLICAS
 
 Route::name('conducts')->get('/conducts', 'ConductController@index');
 Route::name('conducts_buscar')->post('/conducts/edo', 'ConductController@search');
+Route::name('conduct_show')->get('/conducts/{conduct}', 'ConductController@show');
 
 Route::get('/', function () {
     return view('welcome');

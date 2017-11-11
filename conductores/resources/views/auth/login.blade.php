@@ -2,21 +2,7 @@
 
 @section('content')
 
-<section class="top">
-
-<div class="container">
-    <div class="row">
-        
-        <div class="">
-            <p> &nbsp; </p>
-        </div>
-
-    </div>
-</div>
-    
-</section>
-
-<section class="center">
+<br>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -81,19 +67,15 @@
             </div>
         </div>
     </div>
-</section>
 
-<section class="bottom">
-    <div class="container">
-        <div class="row">
-            
-            <div class="">
-                <p> &nbsp; </p>
-            </div>
 
-        </div>
-    </div>
-        
-    </section>
+
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+    $('body').css('backgroud-color','#ECECEC');
+</script>
 
 @endsection

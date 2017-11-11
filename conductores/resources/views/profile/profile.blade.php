@@ -2,21 +2,11 @@
 
 @section('content')
 
-<section class="top">
-
-<div class="container">
-    <div class="row">
-        
         <div class="">
             @include('layouts._messages')
         </div>
 
-    </div>
-</div>
-    
-</section>
-
-<section class="center">
+<section>
 
 				<div class="container">
 					
