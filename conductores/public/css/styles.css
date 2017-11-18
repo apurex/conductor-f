@@ -10,7 +10,7 @@ p {
 
 	font-size: 1.2em;
 
-	text-indent: 3em;
+	/*text-indent: 3em;*/
 
 }
 
@@ -94,14 +94,14 @@ p {
 .roles {
 	padding-top: 30px;
 	padding-bottom: 30px;
-	background-color: #D5D8DC;
+	background-color: #FFF;
 	min-height: 300px;
 }
 
 /** NOSOTROS */
 
 .about {
-	background-color: #EAECEE;
+	background-color: #ECECEC;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	min-height: 300px;
@@ -116,14 +116,14 @@ p {
 
 .title-about {
 	font-family: 'Anton', sans-serif;
-	color: #F1C40F;
+	color: #00B2A3;
 	
 }
 
 /** RESUMEN */
 
 .resumen {
-	background-color: #D5D8DC;
+	background-color: #FFF;
 	min-height: 300px;
 }
 
@@ -147,7 +147,7 @@ p {
 }
 
 .center {
-	background-color: #EAECEE;
+	background-color: #FEFEFE;
 }
 
 .center p {
@@ -289,11 +289,20 @@ p {
 
 footer {
 	background-color: #F4D03F;
-	min-height: 50px;
+	width: 100%;
+	height: 50px;
+	bottom: : 0px;
+	position: relative;
 }
 
 /* PAGOS */
 
 .items-img {
 	width: 150px;
+}
+
+/* Colores */
+
+.navbar{
+	margin-bottom: 0px;
 }

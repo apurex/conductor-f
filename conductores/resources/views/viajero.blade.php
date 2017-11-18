@@ -39,7 +39,9 @@
 
                 <br>
 
-                <p> <span class="fonts-top2"> ¡¡Y lo mejor de todo Gratis.!! </span> <a href="#" class="btn btn-warning">REGISTRARME</a> </p>
+                <p><span class="fonts-top2"> ¡¡Y lo mejor de todo Gratis.!! </span></p>
+                <br>
+                <a href="{{ route('register') }}" class="btn btn-success btn-lg">REGISTRARME</a>
 
             </div>
 

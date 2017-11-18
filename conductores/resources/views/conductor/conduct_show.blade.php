@@ -2,28 +2,14 @@
 
 @section('content')
 
-<section class="top">
 
 <div class="container">
-    <div class="row">
-        
-        <div class="">
-            <p> &nbsp; </p>
-        </div>
-
-    </div>
-</div>
-    
-</section>
-
-<section class="center">
-
-				<div class="container">
 					
-					<div class="row title-p">
+ <div class="row title-p">
 						
-						<div class="col-md-4">
+  <div class="col-sm-4">
 
+  <div class="col-sm-12">
 						@if ($extension != null)
 						   
 							<img src="{{ url('storage/imgs/')}}/{{$conduct->user_id}}.{{$extension}}" alt="" class="img-responsive">
@@ -34,10 +20,10 @@
 
 						@endif
 						@if(Auth::user()->roles != 1)
-							<div class="">
+							<div>
 								<a href="#" class="btn btn-warning center-block no-float" title="">CONTACTAR</a>
 							</div>
-                        <div>
+  </div>           
 @php
 $votos = App\Score::where("conduct_id","=",$conduct->id)->get();
 $totalvotos = count($votos);
@@ -93,7 +79,7 @@ $positivos = $positivos/$totalvotos*100;
 $neutros = $neutros/$totalvotos*100;
 }
 @endphp
-                            Puntuacion: Total Votos: {{$totalvotos}}<div class="progress">
+Puntuacion: Total Votos: {{$totalvotos}}<div class="progress">
   <div class="progress-bar progress-bar-danger" style="width: {{$negativos}}%">
     <span class="sr-only">{{$negativos}} mal (success)</span>
   </div>
@@ -103,13 +89,13 @@ $neutros = $neutros/$totalvotos*100;
   <div class="progress-bar progress-bar-success" style="width: {{$positivos}}%">
     <span class="sr-only">{{$positivos}} Complete (danger)</span>
   </div>@php } @endphp
-</div></div>
+</div>
 
-                        </div>
-                        
-						</div>
+</div>
+</div>
+<!-- Fin foto y puntuacion -->
 
-						<div class="col-md-4 text-capitalize">
+						<div class="col-sm-4 text-capitalize">
 							
 							<h2>Datos Personales</h2>
                     <dl class="dl-horizontal">
@@ -120,7 +106,7 @@ $neutros = $neutros/$totalvotos*100;
 						</div>
 
 
-						<div class="col-md-4 text-capitalize">
+						<div class="col-sm-4 text-capitalize">
 							
 						<h2>Datos Del Auto</h2>
 
@@ -131,24 +117,20 @@ $neutros = $neutros/$totalvotos*100;
                         </dl>
 						</div>
 
-					</div>
+					</div></div>
 
 					
 
-            <div class="container">
-<div class="row">
-              <div class="row">
+             
                 <div class="container">
                   <h2>Descripcion:</h2>
               
               <p> {{ $conduct->body }} </p>
                 </div>
-              
-            </div>
+           
+          <div class="container">
 
-          <div class="row">
-
-            <div class="container">
+      
               <div class="text-center">
             
             <h2>Fotos del vehiculo <small> <strong> Click a la imagen para Agrandar</strong></small> </h2>
@@ -171,13 +153,8 @@ $neutros = $neutros/$totalvotos*100;
           @endfor
             </div>
 
-          </div>
 
-            </div>
 
-					</div>
-	
-</section>
 
 <!-- Imagenes de los Carros. -->
 
