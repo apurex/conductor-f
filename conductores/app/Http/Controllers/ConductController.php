@@ -118,8 +118,8 @@ class ConductController extends Controller
 	public function show(Conduct $conduct)
     {
     	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);
-    	$id = Auth::user()->id;
-    	$user_voto = \App\Score::where([['user_id',$id],['conduct_id', $conduct->id]])->first();
+    	//$id = Auth::user()->id;
+    	$user_voto = \App\Score::where([['user_id',2],['conduct_id', $conduct->id]])->first();
     	$extension = Conduct::find($conduct->id)->user()->first()->extension;
 
     	$ruta = 'public/imgs/cars/car_' . $conduct->user_id;
@@ -130,7 +130,7 @@ class ConductController extends Controller
     		$dir2[]=str_replace("public","storage",$dir[$i]);
     	}
 
-        return view('conductor.conduct_show')->with(['conduct' => $conduct, 'user_voto' => $user_voto, 'extension' => $extension, 'carros' => $dir2]);
+        return view('conductor.show')->with(['conduct' => $conduct, 'user_voto' => $user_voto, 'extension' => $extension, 'carros' => $dir2]);
     }
 
     public function activar_profile(Request $conduct) {
