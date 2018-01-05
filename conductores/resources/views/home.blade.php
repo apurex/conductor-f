@@ -17,7 +17,28 @@
                     <div>visita y ve mas conductores</div>
                 </div>
             </div>
+            <div id="nuevo">
+                @{{mensaje}}
+            </div>
+            
+            @section('script')
+
+            <script type="text/javascript">
+
+                var a = new Vue({
+                    el: '#nuevo',
+                    data: {
+                        mensaje: 'Probando bue'
+                    }
+                })
+
+            </script>
+
+            @endsection
         </div>
     </div>
 </div>
+<div id="app">
+                <example></example>
+            </div>
 @endsection

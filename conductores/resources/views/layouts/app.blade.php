@@ -70,6 +70,7 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             @if(Auth::user()->roles == 1)
+                                <li><a href="{{ route('home') }}"><i class="fa fa-home"></i></a> </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos <span class="caret"></span></a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
@@ -130,6 +131,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/build.js') }}"></script>
 
     @yield('script')
 </body>
