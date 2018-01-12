@@ -51,7 +51,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Venecars') }}
+                        <img alt="{{ config('app.name', 'Venecars') }}" src="{{ url('/img/logo-venecars.png') }}" width="50">
                     </a>
                 </div>
 
