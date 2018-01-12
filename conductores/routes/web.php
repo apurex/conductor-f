@@ -86,6 +86,7 @@ RUTAS PUBLICAS
 */
 
 Route::name('conducts')->get('/conducts', 'ConductController@index');
+Route::name('conductos')->get('/conductores', 'ConductController@index2');
 Route::name('conducts_buscar')->post('/conducts/edo', 'ConductController@search');
 Route::name('conduct_show')->get('/conducts/{conduct}', 'ConductController@show');
 

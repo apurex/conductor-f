@@ -115,6 +115,15 @@ class ConductController extends Controller
 
 	}
 
+	public function index2(){
+
+		//$conducts = Conduct::all();
+		$conducts = Conduct::where('completed',1)->get();
+		//dd($conducts);
+		return $conducts;
+
+	}
+
 	public function show(Conduct $conduct)
     {
     	//$conduct = Conduct::with('user')->orderBy('id', 'desc')->paginate(10);

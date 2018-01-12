@@ -47,7 +47,7 @@
       
       </form></div></div>
         <hr>
-
+{{--
             <div class="row" id="conductores">
 
             @if(count($conducts)<1)
@@ -90,13 +90,43 @@
                 @endforeach              
 
             </div>
-
+--}}
+<conductores></conductores>
 </div>
 
 </section>
+{{--
+Auqi ta el componente
 
 <section>
-  
+<div id="nuevo">
+    @{{mensaje}}
+    <pre>
+      @{{conducts}}
+    </pre>
+</div>
 </section>
+--}}
+
+@endsection
+
+@section('script')
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+    var b = new Vue({
+        el: '#nuevo',
+        mounted(){
+          axios.get('/conductores').then(res => {
+            this.conducts = res.data
+          }).catch(err => {console.log(err)})
+        },
+        data: {
+            mensaje: 'Probando bue en conductores',
+            conducts: []
+        }
+    })
+
+</script>
 
 @endsection
