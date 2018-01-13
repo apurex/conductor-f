@@ -13,6 +13,11 @@
 
                   <!-- faltan las fotos -->
 
+                  
+                    <img v-if="conduct.extension != null" :src="'/storage/imgs/'+conduct.user_id+'.'+conduct.extension" alt="">
+
+                    <img v-else src="/img/profile.png" alt="">
+
                       <div class="caption">
                         <h3>{{ conduct.name }} {{ conduct.last_name }}</h3>
                         <p> {{ conduct.short }} </p>
@@ -37,6 +42,8 @@
             .then(res => {
                 this.conductores = res.data;
                 console.log(res.data)
+            }).catch(err => {
+                console.log(err)
             });
             console.log('Component mounted.')
         },

@@ -7,6 +7,7 @@ use App\Conduct;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class ConductController extends Controller
 {
@@ -117,8 +118,12 @@ class ConductController extends Controller
 
 	public function index2(){
 
-		//$conducts = Conduct::all();
-		$conducts = Conduct::where('completed',1)->get();
+		$conducts = DB::table('conducts as c')
+                     ->select(DB::raw('c.*, u.extension'))
+                     ->where('completed', '=', 1)
+                     ->join('users as u', 'u.id', '=', 'c.user_id')
+                     ->get();
+		//$conducts = Conduct::where('completed',1)->join('user', 'users.id', '=', 'conducts.user_id')->get();
 		//dd($conducts);
 		return $conducts;
 
