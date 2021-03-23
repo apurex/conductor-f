@@ -1,2 +1,2 @@
 # conducor-f
-Proyecto
+Proyecto para conectar personas con servicios de transporte
